@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+	<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<title th:include="fragments/fragment :: headerFragment('View')"></title>
+		<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+		<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+	</head>
+	<body>
+		<nav th:replace="fragments/fragment :: navbar"></nav>
+		<h3 th:text="'Alamat : ' + ${dealer.alamat}"></h3>
+		<h3 th:text="'Telfon : ' + ${dealer.noTelp}"></h3>
+		<form th:action="@{/dealer/delete}" th:object="${dealer}" method="GET">
+			<input  type="hidden" th:value="${dealer.id}" name="dealerId"></input>
+			<button type="submit" >delete dealer</button>
+		</form>
+		<br>
+		<form th:action="@{/car/delete}" th:object="${dealer}" method="POST">
+			<table>
+				<thead>
+					<tr>
+						<th>No.</th>
+						<th>Brand</th>
+						<th>Type</th>
+						<th>Price</th>
+						<th>Amount</th>
+						<th>Aksi</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="car,iterationStatus : *{listCar}">
+						<td th:text="${iterationStatus.count}"></td>
+						<td th:text="${car.brand}"></td>
+						<td th:text="${car.type}"></td>
+						<td th:text="${car.price}"></td>
+						<td th:text="${car.amount}"></td>
+						<td>
+							<input type="checkbox" th:field="*{listCar}" th:value="${car.id}"/>
+							<label th:for="${#ids.prev('listCar')}">Hapus</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<button type="submit">Hapus yang dipilih</button>
+		</form>
+		<br>
+		<form th:action="@{/car/add/} + ${dealer.id}">
+			<button value="submit">Tambah Mobil</button>
+		</form>
+		<h5><a th:href="@{/dealer/update/} + ${dealer.id}">update Dealer</a></h5>
+	</body>
+	</html>

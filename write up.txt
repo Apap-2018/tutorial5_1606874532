@@ -1,0 +1,11 @@
+Latihan 
+3. Jelaskan perbedaan antara th:include dengan th:replace
+contoh penggunaan: <div th:include="...">konten</div>
+maka pada halaman tersebut akan muncul isi konten didalam tag <div>
+(pada tutorial5, include memasang js dan css yang menambah background hitam pada header page)
+
+sementara jika menggunakan <div th:replace="...">konten replace</div>
+maka konten replace akan mengisi isi tag <div>
+(pada tutorial5, replace mengisi "APAP" dan "Home" di redirect ke page home)
+
+

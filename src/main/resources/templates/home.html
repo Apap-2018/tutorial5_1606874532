@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title th:include="fragments/fragment :: headerFragment('Home')"></title>
+	
+	<object th:include="fragments/fragment :: css" th:remove="tag"></object>
+	<object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+	<nav th:replace="fragments/fragment :: navbar"></nav>
+	
+	<div class="container-fluid">
+	<h2>Hello!</h2>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header">
+					Tambah Dealer
+				</div>
+				<div class="card-body">
+					<p class="card-text">Fitur untuk menambah dealer.</p>
+					<a class="btn btn-primary" th:href="@{/dealer/add}">Tambah</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-header">
+					Cari Dealer berdasarkan Id
+				</div>
+				<form th:action="@{/dealer/view}" method=GET>
+					<div class="card-body">
+						<label for="dealerId">Id Dealer:</label>
+						<input type="text" name="dealerId" class="form-control"/>
+						<button type="submit" class="btn btn-primary">Cari</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<!-- <h3>Tambah Dealer</h3>
+	<a th:href="@{/dealer/add}">Tambah</a>
+	
+	<h3>Cari Dealer berdasarkan Id</h3>
+	<form th:action="@{/dealer/view}" method="GET">
+		Id Dealer: <br>
+		<input type="text" name="dealerId"/>
+		<button type ="submit">Cari</button>
+	</form>
+	<h3>Lihat Semua Dealer</h3>
+	<form th:action="@{/dealer/view/all}" method = "GET">
+	<button type="submit">click here</button>
+	
+	</form> -->
+	</div>
+</body>
+</html>
